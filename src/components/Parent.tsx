@@ -1,27 +1,51 @@
+// interface ChildProps {
+//     title: string;
+//     age: number
+// }
+// //ルール決める役目
+
+// const Parent = ()=> {
+//     return(
+//         <Child 
+//             title="Hello, World"
+//             age={23} />
+//     )
+// }
+// // 親は子にtitleとageというデータを渡す
+
+// const Child = (props: ChildProps)=> {
+//     return (
+//       <div>
+//         <h1>{props.title}</h1>
+//         <p>私は、{props.age}歳です</p>
+//       </div>
+//     );
+// }
+// // 子が持っているデータ(props)の型はChildPropsです
+
+// export default Parent;
+
 interface ChildProps {
-    title: string;
-    age: number
+  title: string;
+  age: number
 }
-//ルール決める役目
 
-const Parent = ()=> {
-    return(
-        <Child 
-            title="Hello, World"
-            age={23} />
-    )
+const Parent = () => {
+  return (
+    <Child 
+      title="Hello, world"
+      age={23} />
+  )
 }
-// 親は子にtitleとageというデータを渡す
 
-const Child = (props: ChildProps)=> {
-    return (
-      <div>
-        <h1>{props.title}</h1>
-        <p>私は、{props.age}歳です</p>
-      </div>
-    );
+const Child = (props: ChildProps) => {
+  return (
+    <div>
+      <h1>ブログ名：{props.title}</h1>
+      <p>私は{props.age}歳です</p>
+    </div>
+  );
 }
-// 子が持っているデータ(props)の型はChildPropsです
 
 export default Parent;
 
