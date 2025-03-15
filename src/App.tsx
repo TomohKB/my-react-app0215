@@ -90,10 +90,7 @@ const App = () =>  {
   showIncompleteTodos()
   //関数を実行
   console.log(todos);
-  
-  
-  
-  
+
     
   return (
     <div>
