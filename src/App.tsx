@@ -4,7 +4,7 @@ import Counter from './components/Counter';
 import InputValue from './components/InputValue';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Todo} from "./type"
 
 const App = () =>  {
@@ -91,10 +91,93 @@ const App = () =>  {
   //関数を実行
   console.log(todos);
 
+  // const double = (num: number) => {
+  //   return(
+  //     num * 2;
+  //   );
+  //   const doubleFunction = () => {
+  //     return(
+  //       double * 2
+  //     )
+  //   }
+  //   console.log(doubleFunction(2));
     
+  // }
+
+  // const name = ["太郎"]
+  // const sayHi = () => {
+  //   console.log(`こんにちは、${name}`);
+  // }
+  // sayHi()
+
+  // const sayHi = () => {
+  //   setTimeout(() => {
+  //     console.log("2秒後に表示される");
+  //   }, 2000);
+  // }
+  // sayHi()
+
+  // const showMessagne = () => {
+  //   setTimeout(() => {
+  //     console.log("3秒後に実行されました");
+  //   }, 3000)
+  // }
+  // showMessagne()
+
+  // const sayUserName = (name: string) => {
+  //   setTimeout(() => {
+  //     console.log(`こんにちは、${name}さん`);
+  //   }, 2000)
+  // }
+  // sayUserName("太郎")
+
+  const [message, setMessage] = useState("初期メッセージ");
+
+  const updateMessage = () => {
+    setTimeout(() => {
+      setMessage("更新されました");
+    }, 3000)
+  }
+
+  const [name, setname] = useState("ユーザー取得中・・・");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setname("太郎");
+    }, 2000)
+  }, [])
+  
+
+  const [count, setCount] = useState(null);
+
+  const startCountdown = () => {
+    setCount(5); //カウントを5にセット
+    
+    const countdown = () => {
+      setCount(prevCount => {
+        if (prevCount > 1) {
+          return prevCount - 1;
+        } else {
+          return 0;
+        }
+      });
+      setTimeout(countdown, 1000);
+      //何回も動かす時に使われる
+    }
+    setTimeout(countdown, 1000)
+    //関数を呼び出す
+  }
+
   return (
     <div>
       <Header title="タイトル" />
+      <p>{message}</p>
+      <button onClick={updateMessage}>更新</button>
+      <h1>こんにちは、{name}さん</h1>
+      <h1>{count !== null 
+        ? count //countがnullじゃなければcountを表示
+        : "カウントダウン待機中・・・"}</h1> 
+      <button onClick={startCountdown}>カウントダウン開始</button>
       <Counter />
       <InputValue />
       <Parent />
