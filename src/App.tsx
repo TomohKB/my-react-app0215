@@ -4,9 +4,97 @@ import Counter from './components/Counter';
 import InputValue from './components/InputValue';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { useState } from 'react';
+import {Todo} from "./type"
 
-function App() {
+const App = () =>  {
+  // const [todos, setTodos] = useState<Todo>([]);
 
+  // //todoの追加
+  // const addTodo = (text: string) => {
+  //   const newTodo = {
+  //     id: Date,now,
+  //     text,
+  //     completed: false,
+  //   };
+  //   setTodos([...todos, newTodo])
+  // };
+
+  // //todoの削除
+  // const deleteTodo = (id: number) => {
+  //   setTodos(todos.filter((todo) => todo.id !== id));
+  //   //!== 等しくない
+  //   //filter() は、配列の中から特定の条件に合う要素だけを残して、新しい配列を作るメソッド
+  // }
+
+  // const toggleTodo = () => {
+  //   setTodos(
+  //     todos.map((todo) =>
+  //       todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  //     )
+  //     //!todo.completed 反転するって意味(!)
+  //   );
+  // }
+
+  const fruits = ["りんご", "バナナ", "ブドウ"];
+  fruits.map((fruit, index) => {
+    return(
+      console.log({index, fruit})
+    )
+  });
+
+  const students = ["太郎", "二郎", "三郎"];
+  const numberedStudents = students.map((student, index) => {
+    return{
+      No: index,
+      student: student
+    }
+  })
+  console.log(numberedStudents);
+
+  // const numbers = [10, 20, 30, 40, 50, 60];
+  // const evenIndexNumbers = numbers.filter((number, index) => {
+  //   return(
+  //     index % 2 === 0
+  //   )
+  // })
+  // console.log(evenIndexNumbers);
+  
+  const numbers = [5, 10, 15, 20, 25, 30];
+  const removeNumber = (value: number) => {
+    const newNumbers = numbers.filter((number) => {
+      return(
+        number !== value
+      );
+    })
+    console.log(newNumbers);
+  }
+  removeNumber(15);
+  console.log(numbers);
+  
+  const todos = [
+    { id: 1, text: "勉強する", completed: true },
+    { id: 2, text: "運動する", completed: false },
+    { id: 3, text: "買い物する", completed: false },
+  ];
+
+  const showIncompleteTodos = () => {
+    const imcompleteTodos = todos.filter((todo) => {
+      return(
+        todo.completed === false
+      )
+    })
+    console.log(imcompleteTodos);
+  }
+  //関数を定義している
+  showIncompleteTodos()
+  //関数を実行
+  console.log(todos);
+  
+  
+  
+  
+    
   return (
     <div>
       <Header title="タイトル" />
@@ -18,6 +106,7 @@ function App() {
   );
 }
 
+  
 
 
 export default App;

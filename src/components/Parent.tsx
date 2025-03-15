@@ -47,6 +47,8 @@ const Child = (props: ChildProps) => {
   );
 }
 
+
+
 export default Parent;
 
 // const Parent = ()=> {
